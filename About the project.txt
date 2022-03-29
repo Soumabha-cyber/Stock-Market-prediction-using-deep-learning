@@ -1,0 +1,163 @@
+Projject of stock market prediction 
+
+We are going to analyze the stock market data and build a deep learning model 
+which can predict the future stock price based on previous data. 
+
+In this project we do
+
+1. Scrapping the Stock market data and Technical indicator data.
+2. Performing Data Processing on Time Series data. 
+3. Creating and training a Sequential model on Tensorflow 2.0 
+
+Prerequisites
+
+Basic Understanding on Artificial neural networks and Recurrent neural networks Working and Implementation.
+
+Understanding stock market
+Shares:
+1. A stock or an equity is a security that represents the ownership of a fraction of a corporation. 
+2. It entitles the owner of the stock to a proportion of the corporation's assets and profits equal to how much stock they own. 
+3. These units of stock are called "shares."
+Market:
+1. The stock market is the collection of markets. and exchanges where regular activities of buying, selling, and issuance of 
+shares of publicly held companies take place.
+
+EXAMPLE
+
+1. Imagine I have a company worth 10 million dollars. People have good trust in my company and I wanted to list my company 
+   stock on an exchange like “New york stock exchange”.
+2. But before going into public, I would divide my company total evaluation into 60, 40.
+3. 6 Million worth of assets is still under my control and 4 million worth assets.To be sold to people who want to be a part 
+   of company's growth. 
+4. Before selling those 4 million dollars of my company’s evaluation and I would price my each share as 1 dollar. 
+5. So, I am listing 4 million dollars worth of the company's evaluation as 4 million shares in an exchange. 
+//
+6. Once the shares are listed on exchange and they are openly traded, it all depends on buyers and sellers. 
+7. If the buyers kept buying the stock, the supply of stock circulating on exchange decreases and we all know when supply 
+   decreases the demand increases which increases the price of stock and eventually the company’s market evaluation.
+//
+8. As the founder of the company and 60 percent stock stockholder, I can sell little percentages of my
+   stock when the prices are high.
+9. That will help me raise money for the company's expansion.
+
+
+
+
+Stock market investments generate great profits and is a fundamental stimulus for most of the market researchers in this area. 
+Most researchers use either technical or fundamental analysis. 
+
+
+		Technical Analysis						Fundamental Analysis
+
+1. Technical analysis focuses on analyzing the 			1. Fundamental analysis depends on analyzing unstructured 
+   direction of prices to predict future prices.		   textual information like financial news and earning reports. 
+2. You might have come across people drawing 			2. Performing fundamental analysis using machine learning 
+   different lines and curves on the price chart 		   techniques is quite interesting as it's mostly based 
+   to predict the future price direction			   on analysing text and sentiments.
+3. This is technical analysis					3. We see the stock price of companies tend to rise when 
+								   their products get a word of mouth or they make a surprise 
+								   announcement.This rise is due to fundamentals.
+
+We can fetch data from social media websites like Twitter but we often don’t get the outcomes of it. 
+In simple words, we need to solve the problem statement in an unsupervised way which could be a hit or miss in many situations.
+
+(( Technical analysis is a pure number game where we have a bunch of numeric past information which has to be mapped to a number 
+which we expect to be the future price which suits to be a perfect problem ))
+
+------------------------
+So in this project, our aim is to design a deep learning model that does the predictions based on technical analysis, which 
+means the data that we are going to fetch would be having the price information at a regular time interval with its respective 
+characteristics.The problem statement here comes under regression type, where the features are made up of past data feeds and 
+target is the current value.
+------------------------
+
+The dataset in this project is going to be fetched from open source Python libraries.
+*********************
+The open source API that we are going to use for fetching the stock data is "YFINANCE", YFinance
+offers a reliable threaded and Pythonic way to download historical market data from Yahoo Finance.
+
+*********************************************
+The columns in a dataset are
+
+-------The trades on the stock market happen between two time intervals--------- 
+-------The Trading Session for New york stock exchange is between 9:30am and 4pm--------
+-------As company’s stock is openly traded, it's up to people’s sentiment to drive it High or Low----------
+
+Date-
+Open- The stock price at 9:30am is called Open
+High- When any stock is available that perople are ready to buy in high price for surprise output
+Low- When stock product dont get what they expected so it shorts the stocks.
+Close- price at 4:00pm is called Close. 
+Adj Close- The adjusted closing price amends a stock's closing price to reflect that stock's value after accounting for any corporate actions.
+Volume- Trading volume is a measure of how much of a given financial asset has traded in a period of time. 
+
+
+How stock price works
+--------------------
+--------------------
+Suppose if Google announces a surprise event and reveals some awesome products.
+Then it's very likely that people will push prices higher the next day when Trading opens. 
+If Google server crashes or their products slow down and people are very angry at their service on Twitter and other social networks.
+It's very likely that people will short the stock next day when Trading opens. 
+
+The indicators that determine the highest and least values of a particular stock traded that day are high and low, respectively.
+
+ADJUSTED CLOSE -
+1. Considering the stock price of google as 1750 US dollars, we know that it's quite expensive to own 1 stock of google. 
+2. What If Google splits its stock into 100 splits and the price of each split is 17.5$, then it would be easy for an individual to hold 1 stock of google.
+3. Splitting doesn’t affect the market evaluation company, but it has a quite a lot of psychological impact on new buyers to own the stock. 
+4. In this case all the previous closing values are divided by 100, to get the adjusted closing price. 
+
+VOLUME -
+1. Trading volume is a measure of how much of a given financial asset has traded in a period of time. 
+2. For stocks, volume is measured in the number of shares traded.
+3. Volume determines the market interest and liquidity of a particular stock.
+4. If a stock volume is gradually decreasing with a constant or decrease in price of that stock, it means people are losing interest in investing in that company. 
+5. If a stock volume is gradually increasing with a constant or increase in price of that stock, it means people are gaining interest in investing in that company. 
+
+
+***********************
+***********************
+In this model we use scarpping to get some features to improve our model's performance
+
+Before investing, I would like to look at a few important indicators that would help me understand whether it is the right time to enter
+
+Investors analyze a lot of technical indicators of the stock and buy it if the stock pattern seems favourable. 
+Few of the Technical Indicators are: 
+1. Moving averages.
+2. MacD.
+3. Bollinger Bands.
+4. Fibonacci retracement.
+5. Relative strength Index or RSI.
+
+The RSI indicator seems the best feature that could be integrated into the model. others are tough to pass in the model
+Relative Strength Index (RSI) is a momentum indicator used in technical analysis that measures the magnitude of recent 
+price changes to evaluate overbought or oversold conditions in the price of a stock or other asset.
+
+---------EXAMPLE--------
+
+Anywhere we see the RSI greater than 70 points.
+
+Then we call that the market is overbought and the price jump can happen any time.
+And if the RSI is less than 30 points, then we call the market is oversold.
+And if the company holds potential, then the investors would crazily buy the stock.
+
+
+---------
+---------
+We use open source API provided by https://www.alphavantage.co/ to fetch the RSI data
+
+--------------- SUMMARY----------
+
+We learnt how to Fetch stock market data using Yfinance API.
+We learnt how to process the stock market data before passing it into the model, you can make use of these steps in any time series projects.
+Analyzed the results of our initial model and addressed the issue with it. 
+The “technical indicators” and how they can help in making decisions. 
+We scrapped the extra information and retrained the same model which improved the previous results. 
+
+Ways to Improve the model
+1. We can also fetch a few more indicators like Exponential Moving averages or Fibonacci retracement regions and retrain our model which may improve the results.
+2. Before solving the problem statement like stock market prediction we need to perfectly understand the market sentiments and how the market reacts at different situations. 
+3. We have solved this problem statement in a regression perspective where we tried to predict a continuous value.
+4. Convert the same problem statement into “Classification” where the problem statement would be “Predict whether stock price of tomorrow is going to be greater than today or not”. 
+5. It will reduce the complexity of the problem and there would be better metrics like “Accuracy” or “Recall” to evaluate the model. 
